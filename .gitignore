@@ -15,4 +15,5 @@ Cargo.lock
 
 # Custom
 *.o
+*.a
 *.exe
