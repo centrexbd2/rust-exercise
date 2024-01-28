@@ -1,8 +1,6 @@
-use std::convert::Infallible;
-
 // Import the necessary library for interacting with hardware registers
 // embedded_hal is a library that provides a common hardware abstraction layer for embedded systems
-use embedded_hal::digital::{Error, ErrorType, OutputPin};
+use embedded_hal::digital::OutputPin;
 use cortex_m::asm; // Import the ARM Cortex-M assembly macros for delaying 
 
 // Define a struct to represent the GPIO controller
@@ -51,7 +49,7 @@ impl GpioController {
 
 // Implement the OutputPin trait for our custom GpioPin struct
 impl OutputPin for MyGpioPin {
-    type Error = ();
+    type Error = ()
 
     fn set_high(&mut self) -> Result<(), Self::Error> {
         // Simulate the hardware behavior by changing the state of the GPIO pin
