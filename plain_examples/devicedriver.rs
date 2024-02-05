@@ -1,7 +1,7 @@
 // Import the necessary library for interacting with hardware registers
 // embedded_hal is a library that provides a common hardware abstraction layer for embedded systems
-use embedded_hal::digital::v2::OutputPin;
-use cortex_m::asm; // Import the ARM Cortex-M assembly macros for delaying
+use cortex_m::asm;
+use embedded_hal::digital::v2::OutputPin; // Import the ARM Cortex-M assembly macros for delaying
 
 // Define a struct to represent the GPIO controller
 pub struct GpioController {
@@ -25,7 +25,11 @@ impl GpioController {
         let pin_b = MyGpioPin { is_on: false };
         let pin_c = MyGpioPin { is_on: false };
 
-        GpioController { pin_a, pin_b, pin_c }
+        GpioController {
+            pin_a,
+            pin_b,
+            pin_c,
+        }
     }
 
     // Function to turn on a specific LED (GPIO pin)
@@ -86,5 +90,3 @@ fn main() {
     // Wait for some time (simulate LED being off)
     asm::delay(1000000);
 }
-
-

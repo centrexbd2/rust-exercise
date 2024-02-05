@@ -1,6 +1,6 @@
+use std::error::Error;
 use std::fs::File;
 use std::io::{self, BufRead};
-use std::error::Error;
 
 // Define a struct to hold the data from the CSV file
 #[derive(Debug)]
@@ -47,4 +47,3 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     Ok(())
 }
-

@@ -1,4 +1,3 @@
-
 use std::io;
 
 // Define the Car struct
@@ -41,31 +40,41 @@ fn get_car_details() -> Car {
 
     // Make
     println!("Make:");
-    io::stdin().read_line(&mut input).expect("Failed to read input");
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read input");
     let make = input.trim().to_string();
     input.clear();
 
     // Model
     println!("Model:");
-    io::stdin().read_line(&mut input).expect("Failed to read input");
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read input");
     let model = input.trim().to_string();
     input.clear();
 
     // Year
     println!("Year:");
-    io::stdin().read_line(&mut input).expect("Failed to read input");
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read input");
     let year: u16 = input.trim().parse().expect("Invalid input");
     input.clear();
 
     // Color
     println!("Color:");
-    io::stdin().read_line(&mut input).expect("Failed to read input");
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read input");
     let color = input.trim().to_string();
     input.clear();
 
     // Mileage
     println!("Mileage (in miles):");
-    io::stdin().read_line(&mut input).expect("Failed to read input");
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read input");
     let mileage: u32 = input.trim().parse().expect("Invalid input");
 
     // Create and return the car instance
@@ -77,5 +86,3 @@ fn get_car_details() -> Car {
         mileage,
     }
 }
-
-

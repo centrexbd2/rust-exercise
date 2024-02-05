@@ -1,4 +1,3 @@
-
 // Annotated Basic Rust Example: Factorial Calculation
 
 // Define a function to calculate the factorial of a number.
@@ -22,4 +21,3 @@ fn main() {
     // Print the result to the console.
     println!("Factorial of {} is: {}", num, result);
 }
-

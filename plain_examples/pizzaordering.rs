@@ -120,4 +120,3 @@ fn main() {
     }
     println!("Total Cost: ${:.2}", total_cost);
 }
-

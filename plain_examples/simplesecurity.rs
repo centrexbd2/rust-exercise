@@ -1,6 +1,6 @@
+use regex::Regex;
 use std::fs::File;
 use std::io::{self, BufRead, BufReader};
-use regex::Regex;
 
 fn main() {
     let file_path = "input.txt";
@@ -32,9 +32,11 @@ fn main() {
 
         // Search for matches in the current line using the password_regex
         if password_regex.is_match(&line) {
-            println!("Potential security issue found in line {}: {}", line_number + 1, line);
+            println!(
+                "Potential security issue found in line {}: {}",
+                line_number + 1,
+                line
+            );
         }
     }
 }
-
-
