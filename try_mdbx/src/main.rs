@@ -1,19 +1,17 @@
 use std::path::Path;
 
-use libmdbx::{Environment, NoWriteMap, WriteFlags};
+use libmdbx::{Database, NoWriteMap, WriteFlags};
 
 fn main() {
-    let env = Environment::<NoWriteMap>::new()
-        .open(Path::new("_db"))
-        .unwrap();
+    let db = Database::<NoWriteMap>::open(Path::new("_db")).unwrap();
 
     // write
     {
-        let txn = env.begin_rw_txn().unwrap();
-        let db = txn.open_db(None).unwrap();
+        let txn = db.begin_rw_txn().unwrap();
+        let table = txn.open_table(None).unwrap();
         for i in 0..100 {
             txn.put(
-                &db,
+                &table,
                 &format!("key{}", i),
                 &format!("data{}", i),
                 WriteFlags::empty(),
@@ -21,19 +19,19 @@ fn main() {
             .unwrap();
             // delete
             if i > 50 {
-                txn.del(&db, &format!("key{}", i), None).unwrap();
+                txn.del(&table, &format!("key{}", i), None).unwrap();
             }
         }
         txn.commit().unwrap();
     }
     // read
     {
-        let txn = env.begin_ro_txn().unwrap();
-        let db = txn.open_db(None).unwrap();
+        let txn = db.begin_ro_txn().unwrap();
+        let table = txn.open_table(None).unwrap();
         for i in 0..100 {
             println!(
                 "{:?}",
-                txn.get::<Vec<u8>>(&db, format!("key{}", i).as_bytes())
+                txn.get::<Vec<u8>>(&table, format!("key{}", i).as_bytes())
                     .unwrap()
             );
         }
